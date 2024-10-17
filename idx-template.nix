@@ -1,24 +1,14 @@
-﻿# To learn more about how to use Nix to configure your environment
-# see: https://developers.google.com/idx/guides/customize-idx-env
-{ pkgs, ... }: {
-  # Which nixpkgs channel to use.
-  channel = "stable-24.05"; # or "unstable"
-  # Use https://search.nixos.org/packages to find packages
-  packages = [ pkgs.dotnet-sdk_8 ];
-  # Sets environment variables in the workspace
-  env = { };
-  idx = {
-    # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
-    extensions = [ "muhammad-sammy.csharp" ];
-    # Enable previews and customize configuration
-    previews = {
-      enable = true;
-      previews = {
-        web = {
-          command = [ "dotnet" "watch" "--urls=http://localhost:$PORT" ];
-          manager = "web";
-        };
-      };
-    };
-  };
+﻿{ pkgs, environment ? "blazor", ... }: {
+  packages = [ pkgs.dotnet-sdk_8 pkgs.j2cli pkgs.nixfmt ];
+  bootstrap = ''
+    export HOME=/home/user
+    dotnet new ${environment} -o "$WS_NAME"
+    mkdir -p "$WS_NAME/.idx/"
+    cp ${./icon.png} "$WS_NAME/.idx/icon.png"
+    environment=${environment} j2 ${./devNix.j2} -o "$WS_NAME"/.idx/dev.nix
+    nixfmt "$WS_NAME"/.idx/dev.nix
+    cp -rf ${./.}/${environment}/* "$WS_NAME"
+    chmod -R +w "$WS_NAME"
+    mv "$WS_NAME" "$out"
+  '';
 }
