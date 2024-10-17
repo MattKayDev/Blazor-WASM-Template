@@ -1,0 +1,6 @@
+{
+  "name": "Blazor WASM",
+  "description": "Blazor WebAssembly Template is a project template that allows developers to quickly set up a new client-side web application using C# and .NET, leveraging WebAssembly for high-performance execution in the browser.",
+  "icon": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevblogs.microsoft.com%2Fdotnet%2Fblazor-now-in-official-preview%2F&psig=AOvVaw1DNiDjQXTurxIgwXLtuujV&ust=1729069683061000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDJoNSEkIkDFQAAAAAdAAAAABAE",
+  "params": []
+}
