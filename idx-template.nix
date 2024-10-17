@@ -1,4 +1,4 @@
-﻿{ pkgs, environment ? "blazor", ... }: {
+﻿{ pkgs, environment ? "blazor-wasm", ... }: {
   packages = [ pkgs.dotnet-sdk_8 pkgs.j2cli pkgs.nixfmt ];
   bootstrap = ''
     export HOME=/home/user
