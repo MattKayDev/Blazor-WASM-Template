@@ -9,9 +9,9 @@
       "id": "environment",
       "name": "Environment",
       "type": "enum",
-      "default": "blazor-wasm",
+      "default": "blazor",
       "options": {
-        "blazor-wasm": "Blazor app"
+        "blazor": "Blazor app"
       }
     }
   ]
